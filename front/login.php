@@ -14,8 +14,8 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="送出">
-                    <input type="reset" value="清除">
+                    <input type="button" id="submit" value="送出">
+                    <input type="reset" id="reset" value="清除">
                 </td>
                 <td>
                     <a href="./index.php?do=forget">忘記密碼</a>|
@@ -25,3 +25,24 @@
         </table>
     </fieldset>
 </form>
+
+<script>
+    $('#submit').on('click', () => {
+        let account = {
+            user: $('#user').val(),
+            password: $('#password').val(),
+        };
+        $.post('./api/login_check.php', account, (respond) => {
+            if(Number(respond) === 1){
+                if(account.user === 'admin') location.href = './admin.php';
+                else location.href = './index.php';
+            }
+            else{
+                alert(respond);
+                $('#user').val('');
+                $('#password').val('');
+            }
+        });
+    })
+
+</script>

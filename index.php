@@ -51,7 +51,21 @@ foreach($total as $data){
                         請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地!詳見最新消息
                     </marquee>
                     <span style="width:18%; display:inline-block; text-align: center;">
-                        <a href="./index.php?do=login">會員登入</a>
+                        <!-- <a href="./index.php?do=login">會員登入</a> -->
+                        <?php
+                        if(!isset($_SESSION['user'])) echo '<a href="./index.php?do=login">會員登入</a>';
+                        else{
+                            echo "歡迎，{$_SESSION['user']}<input type='button' id='logout' value='登出'>";
+                            echo "
+                                <script>
+                                    $('#logout').on('click', () => {
+                                        $.get('./api/logout.php');
+                                        location.href = './index.php';
+                                    });
+                                </script>
+                            ";
+                        }
+                        ?>
                     </span>
                     <div class="">
                         <?php

@@ -46,7 +46,7 @@
         if(account.user==='' || account.password==='' || account.passwordRe==='' || account.email==='') alert('不可空白');
         else if(account.password !== account.passwordRe) alert('密碼錯誤');
         else{
-            $.post('./api/check.php', {user: account.user}, (respond) => {
+            $.post('./api/reg_check.php', {user: account.user}, (respond) => {
                 console.log(respond);
                 if(Number(respond)) alert('帳號重複');
                 else{
