@@ -20,9 +20,11 @@
     <iframe name="back" style="display:none;"></iframe>
     <div id="all">
         <div id="title">
-            00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36 </div>
-        <div id="title2">
-
+            <?=date("m月d日 l");?> | 今日瀏覽: 1 | 累積瀏覽: 36 
+            <a href="./index.php" style="float: right;">回首頁</a>
+        </div>
+        <div id="title2" title="健康促進網-回首頁">
+            <img src="./icon/02B01.jpg" alt="">
         </div>
         <div id="mm">
             <div class="hal" id="lef">
@@ -34,11 +36,14 @@
             </div>
             <div class="hal" id="main">
                 <div>
-
-                    <span style="width:18%; display:inline-block;">
+                    <marquee style="width: 78%; display: inline-block;">
+                        請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地!詳見最新消息
+                    </marquee>
+                    <span style="width:18%; display:inline-block; text-align: center;">
                         <a href="?do=login">會員登入</a>
                     </span>
                     <div class="">
+
                     </div>
                 </div>
             </div>
