@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once "./api/db.php";
+$total = $Total->searchAll();
+$todayCount = $Total->search(['date'=>date('Y-m-d')])['total'];
+$totalCount = 0;
+foreach($total as $data){
+    $totalCount += $data['total'];
+}
+?>
+
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -20,25 +31,51 @@
     <iframe name="back" style="display:none;"></iframe>
     <div id="all">
         <div id="title">
-            00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36 </div>
-        <div id="title2">
-
+            <?=date("m月d日 l");?> | 今日瀏覽:<?=$todayCount?>  | 累積瀏覽:<?=$totalCount?>
+            <a href="./index.php" style="float: right;">回首頁</a>
+        </div>
+        <div id="title2" title="健康促進網-回首頁">
+            <a href="./index.php"><img src="./icon/02B01.jpg" alt=""></a>
         </div>
         <div id="mm">
             <div class="hal" id="lef">
-                <a class="blo" href="?do=po">分類網誌</a>
-                <a class="blo" href="?do=news">最新文章</a>
-                <a class="blo" href="?do=pop">人氣文章</a>
-                <a class="blo" href="?do=know">講座訊息</a>
-                <a class="blo" href="?do=que">問卷調查</a>
+                <a class="blo" href="?do=account">帳號管理</a>
+                <a class="blo" href="?do=blog">分類網誌</a>
+                <a class="blo" href="?do=news">最新文章管理</a>
+                <a class="blo" href="?do=know">講座管理</a>
+                <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">
                 <div>
-
-                    <span style="width:18%; display:inline-block;">
-                        <a href="?do=login">會員登入</a>
+                    <marquee style="width: 78%; display: inline-block;">
+                        請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地!詳見最新消息
+                    </marquee>
+                    <span style="width:18%; display:inline-block; text-align: center;">
+                        <!-- <a href="./index.php?do=login">會員登入</a> -->
+                        <?php
+                        if(!isset($_SESSION['user'])) echo '<a href="./index.php?do=login">會員登入</a>';
+                        else{
+                            echo "歡迎，{$_SESSION['user']}<br>
+                            <input type='button' id='logout' value='登出'>";
+                            if($_SESSION['user'] == 'admin') echo "<input type='button' id='admin' value='管理'>";
+                            echo "
+                                <script>
+                                    $('#logout').on('click', () => {
+                                        $.get('./api/logout.php');
+                                        location.href = './index.php';
+                                    });
+                                </script>
+                            ";
+                        }
+                        ?>
                     </span>
                     <div class="">
+                        <?php
+                            $page;
+                            if(!isset($_GET['do'])) $page = "main";
+                            else $page = $_GET['do'];
+                            include "./back/$page.php";
+                        ?>
                     </div>
                 </div>
             </div>
