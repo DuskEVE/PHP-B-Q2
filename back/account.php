@@ -14,7 +14,7 @@
         <tr>
             <td><?=$data['user']?></td>
             <td><?=str_repeat('*', strlen($data['password']))?></td>
-            <td style="text-align: center;"><input name="id[]" type="checkbox" value="<?=$data['id']?>"></td>
+            <td style="text-align: center;"><input name="del[]" type="checkbox" value="<?=$data['id']?>"></td>
         </tr>
         <?php
         }
@@ -81,17 +81,12 @@
                 if(Number(respond)) alert('帳號重複');
                 else{
                     $.post('./api/reg.php', account);
-                    location.reload;
+                    location.reload();
                 }
             });
         }
 
     });
     $('#reset').on('click', () => account = {user, password, passwordRe, email});
-    
-    $('#admin-submit').on('click', () => {
-        let arr = [];
-        $.post('./api/delete_account.php')
-    });
 
 </script>
