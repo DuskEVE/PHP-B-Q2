@@ -19,6 +19,18 @@ foreach($total as $data){
 
     <title>健康促進網</title>
     <link href="./css/css.css" rel="stylesheet" type="text/css">
+    <style>
+    #alerr {
+        background: rgba(51, 51, 51, 0.8);
+        color: #FFF;
+        min-height: 100px;
+        width: 300px;
+        position: relative;
+        display: none;
+        z-index: 9999;
+        overflow: auto;
+    }
+    </style>
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/js.js"></script>
 </head>
@@ -31,7 +43,7 @@ foreach($total as $data){
     <iframe name="back" style="display:none;"></iframe>
     <div id="all">
         <div id="title">
-            <?=date("m月d日 l");?> | 今日瀏覽:<?=$todayCount?>  | 累積瀏覽:<?=$totalCount?>
+            <?=date("m月d日 l");?> | 今日瀏覽:<?=$todayCount?> | 累積瀏覽:<?=$totalCount?>
             <a href="./index.php" style="float: right;">回首頁</a>
         </div>
         <div id="title2" title="健康促進網-回首頁">
