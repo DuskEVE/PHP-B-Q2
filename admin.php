@@ -40,9 +40,9 @@ foreach($total as $data){
         <div id="mm">
             <div class="hal" id="lef">
                 <a class="blo" href="?do=account">帳號管理</a>
-                <a class="blo" href="?do=blog">分類網誌</a>
+                <a class="blo" href="?">分類網誌</a>
                 <a class="blo" href="?do=news">最新文章管理</a>
-                <a class="blo" href="?do=know">講座管理</a>
+                <a class="blo" href="?">講座管理</a>
                 <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">

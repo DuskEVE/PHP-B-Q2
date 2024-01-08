@@ -31,7 +31,8 @@ a:hover
 }
 #mm
 {
-	min-height:570px;
+	height:520px;
+	padding-top:3px;
 }
 #all
 {
@@ -56,21 +57,17 @@ a:hover
 	padding:2px;
 	background:url(../icon/02B04.png) repeat-y;
 	/*background-size:100% auto;*/
-	min-height:568px;
+	height:100%;
 	display:inline-block;
 	vertical-align:top;
 	position:relative;
 	top:-3px;
 }
-#mm
-{
-	padding-top:3px;
-}
 #main
 {
 	display:inline-block;
 	width:78%;
-	height:565px;
+	height:100%;
 	padding:4px;
 	border:solid 1px #000000;
 	overflow:auto;
