@@ -6,7 +6,7 @@
         <tr>
             <th width="30%">標題</th>
             <th width="50%">內容</th>
-
+            <th></th>
         </tr>
         <?php
         $currentPage = 1;
@@ -24,20 +24,33 @@
             <td style="background-color: lightgray;" class="title" data-id="<?=$data['id']?>"><?=$data['title']?></td>
             <td>
                 <div id="s<?=$data['id'];?>"><?=mb_substr($data['news'], 0, 25);?>...</div>
+                <div id='a<?=$data['id']?>' style='display: none;'><pre><?=$data['news']?></pre></div>
                 <?php
-                if(!isset($_SESSION['user'])){
-                    echo "<div id='a{$data['id']}' style='display: none;'><pre>{$data['news']}</pre></div>";
+                // if(!isset($_SESSION['user'])){
+                //     echo "<div id='a{$data['id']}' style='display: none;'><pre>{$data['news']}</pre></div>";
+                // }
+                // else{
+                //     echo "
+                //     <fieldset id='a{$data['id']}' style='display: none;'>
+                //         <legend>文章標題:{$data['title']}|讚</legend>
+
+                //         <div><pre>{$data['news']}</pre></div>
+                //     </fieldset>
+                //     ";
+                // }
+                ?>
+            </td>
+            <td>
+            <?php
+            if(isset($_SESSION['user'])){
+                if($Log->count(['news_id'=>$data['id'], 'user'=>$_SESSION['user']]) > 0){
+                    echo"<a href='Javascript:like({$data['id']})'>收回讚</a>";
                 }
                 else{
-                    echo "
-                    <fieldset id='a{$data['id']}' style='display: none;'>
-                        <legend>文章標題:{$data['title']}|讚</legend>
-
-                        <div><pre>{$data['news']}</pre></div>
-                    </fieldset>
-                    ";
+                    echo"<a href='Javascript:like({$data['id']})'>讚</a>";
                 }
-                ?>
+            }
+            ?>
             </td>
         </tr>
         <?php
@@ -69,5 +82,9 @@ $(".title").on('click', (event) => {
     let id = $(event.target).data('id');
     $(`#s${id}, #a${id}`).toggle();
 });
+
+function like(id){
+    $.post('./api/like.php', {news_id: id}, () => location.reload());
+}
 
 </script>

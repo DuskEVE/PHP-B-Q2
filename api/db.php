@@ -111,6 +111,7 @@ $Total = new myDB("localhost", "utf8", "db15_2", "total", "root", "");
 $User = new myDB("localhost", "utf8", "db15_2", "user", "root", "");
 $News = new myDB("localhost", "utf8", "db15_2", "news", "root", "");
 $Que = new myDB("localhost", "utf8", "db15_2", "que", "root", "");
+$Log = new myDB("localhost", "utf8", "db15_2", "log", "root", "");
 
 if(!isset($_SESSION['visited'])){
     if($Total->count(['date'=>date('Y-m-d')]) > 0){

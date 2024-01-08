@@ -42,7 +42,14 @@
                     <pre><?=$data['news']?></pre>
                 </div>
             </td>
-            <td><?=$data['good']?></td>
+            <td>
+                <?php
+                if(isset($_SESSION['user'])){
+                    echo "{$data['good']}個人說<img src='./icon/02B03.jpg' height='20px'>";
+                }
+                else echo "{$data['good']}個人說<img src='./icon/02B03.jpg' height='20px'>";
+                ?>
+            </td>
         </tr>
         <?php
         }
