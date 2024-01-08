@@ -83,8 +83,4 @@ $(".title").on('click', (event) => {
     $(`#s${id}, #a${id}`).toggle();
 });
 
-function like(id){
-    $.post('./api/like.php', {news_id: id}, () => location.reload());
-}
-
 </script>

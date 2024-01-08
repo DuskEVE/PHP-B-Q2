@@ -69,7 +69,7 @@ foreach($total as $data){
                         else{
                             echo "歡迎，{$_SESSION['user']}<br>
                             <input type='button' id='logout' value='登出'>";
-                            if($_SESSION['user'] == 'admin') echo "<input type='button' id='admin' value='管理'>";
+                            if($_SESSION['user'] == 'admin') echo "<a href='./admin.php'><input type='button' id='admin' value='管理'></a>";
                             echo "
                                 <script>
                                     $('#logout').on('click', () => {

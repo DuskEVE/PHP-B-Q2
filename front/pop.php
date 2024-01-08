@@ -44,10 +44,15 @@
             </td>
             <td>
                 <?php
+                echo "{$data['good']}個人說<img src='./icon/02B03.jpg' height='20px'>";
                 if(isset($_SESSION['user'])){
-                    echo "{$data['good']}個人說<img src='./icon/02B03.jpg' height='20px'>";
+                    if($Log->count(['news_id'=>$data['id'], 'user'=>$_SESSION['user']]) > 0){
+                        echo"-<a href='Javascript:like({$data['id']})'>收回讚</a>";
+                    }
+                    else{
+                        echo"-<a href='Javascript:like({$data['id']})'>讚</a>";
+                    }
                 }
-                else echo "{$data['good']}個人說<img src='./icon/02B03.jpg' height='20px'>";
                 ?>
             </td>
         </tr>
