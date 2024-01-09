@@ -57,13 +57,14 @@ class myDB{
         return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
-    function searchAll($target=[]){
+    function searchAll($target=[], $option=''){
         $pdo = $this->dbLogIn();
         $sql = "select * from `$this->table`";
         if(count($target) != 0){
             $targetSet = $this->targetToString($target, "&&");
             $sql = "$sql where $targetSet";
         }
+        if(strlen($option) > 0) $sql = "$sql $option";
 
         return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }

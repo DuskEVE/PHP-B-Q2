@@ -29,7 +29,8 @@
         $end = $start + 5;
         if($end > $count) $end = $count;
         
-        $datas = $News->sql("select * from `news` where `display`='1' order by `good` desc");
+        // $datas = $News->sql("select * from `news` where `display`='1' order by `good` desc");
+        $datas = $News->searchAll(['display'=>1], 'order by `good` desc');
         for($i=$start; $i<$end; $i++){
             $data = $datas[$i];
         ?>
