@@ -76,4 +76,9 @@ class myDB{
     }
 }
 
+$Total = new myDB('total');
+
+if(!isset($_SESSION)){
+    
+}
 ?>
