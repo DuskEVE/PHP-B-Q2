@@ -20,9 +20,11 @@
 	<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
 		<div id="title">
-			00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36 </div>
-		<div id="title2">
-
+			<!-- 00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36  -->
+			
+		</div>
+		<div id="title2" title="健康促進網-回首頁">
+			<a href="./index.php"><img src="./icon/02B01.jpg"></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -34,13 +36,22 @@
 			</div>
 			<div class="hal" id="main">
 				<div>
-
+					<marquee behavior="" direction="" style="width: 80%;">
+						test123
+					</marquee>
 					<span style="width:18%; display:inline-block;">
 						<a href="?do=login">會員登入</a>
 					</span>
-					<div class="">
-					</div>
+
+					
 				</div>
+				
+				<div class="">
+				<?php
+
+				?>
+				</div>
+
 			</div>
 		</div>
 		<div id="bottom">
