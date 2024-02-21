@@ -58,7 +58,7 @@ class myDB{
         else{
             $cols = array_keys($target);
             $values = array_values($target);
-            $sql = "insert into `$this->table`(`".join("`,`", $cols)."`) values(`".join("','", $values)."`)";
+            $sql = "insert into `$this->table`(`".join("`,`", $cols)."`) values('".join("','", $values)."')";
         }
 
         return $pdo->exec($sql);
@@ -70,6 +70,16 @@ class myDB{
 
         return $pdo->exec($sql);
     }
+    function count($target=[]){
+        $pdo = $this->dbLogin();
+        $sql = "select count(*) from `$this->table`";
+        if(count($target) > 0){
+            $targetSet = $this->getTargetSet($target, "&");
+            $sql = "$sql where $targetSet";
+        }
+
+        return $pdo->query($sql)->fetch()['count(*)'];
+    }
     function sql($sql){
         $pdo = $this->dbLogin();
         return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -78,7 +88,22 @@ class myDB{
 
 $Total = new myDB('total');
 
-if(!isset($_SESSION)){
-    
+function updateCount($date, $Total){
+    if($Total->count(['date'=>$date])){
+        $total = $Total->search(['date'=>$date]);
+        $total['count'] += 1;
+        $Total->update($total);
+    }
+    else $Total->update(['count'=>1, 'date'=>$date]);
+};
+
+$date = date('Y-m-d');
+if(!isset($_SESSION['visited'])){
+    $_SESSION['visited'] = $date;
+    updateCount($date, $Total);
+}
+else if($_SESSION['visited'] != $date){
+    $_SESSION['visited'] = $date;
+    updateCount($date, $Total);
 }
 ?>
