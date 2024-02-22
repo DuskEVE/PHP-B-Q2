@@ -28,7 +28,7 @@ class myDB{
     }
     function search($target){
         $pdo = $this->dbLogin();
-        $targetSet = $this->getTargetSet($target, "&");
+        $targetSet = $this->getTargetSet($target, "&&");
         $sql = "select * from `$this->table` where $targetSet";
 
         return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -38,7 +38,7 @@ class myDB{
         $sql = "select * from `$this->table`";
 
         if(count($target) > 0){
-            $targetSet = $this->getTargetSet($target, "&");
+            $targetSet = $this->getTargetSet($target, "&&");
             $sql = "$sql where $targetSet";
         }
         if(strlen($option) > 0) $sql = "$sql $option";
@@ -65,7 +65,7 @@ class myDB{
     }
     function delete($target){
         $pdo = $this->dbLogin();
-        $targetSet = $this->getTargetSet($target, "&");
+        $targetSet = $this->getTargetSet($target, "&&");
         $sql = "delete from `$this->table` where $targetSet";
 
         return $pdo->exec($sql);
@@ -74,11 +74,11 @@ class myDB{
         $pdo = $this->dbLogin();
         $sql = "select count(*) from `$this->table`";
         if(count($target) > 0){
-            $targetSet = $this->getTargetSet($target, "&");
+            $targetSet = $this->getTargetSet($target, "&&");
             $sql = "$sql where $targetSet";
         }
 
-        return $pdo->query($sql)->fetch()['count(*)'];
+        return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC)['count(*)'];
     }
     function sql($sql){
         $pdo = $this->dbLogin();
@@ -87,6 +87,7 @@ class myDB{
 }
 
 $Total = new myDB('total');
+$User = new myDB('user');
 
 function updateCount($date, $Total){
     if($Total->count(['date'=>$date])){
