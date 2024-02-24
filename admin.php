@@ -46,11 +46,20 @@ include_once "./api/db.php";
 			</div>
 			<div class="hal" id="main">
 				<div>
-					<marquee behavior="" direction="" style="width: 80%;">
+					<marquee behavior="" direction="" style="width: 70%;">
 						請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地!詳見最新文章
 					</marquee>
-					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+					<span style="width:28%; display:inline-block;">
+						<!-- <a href="?do=login">會員登入</a> -->
+						<?php
+						if(isset($_SESSION) && $_SESSION['user']=='admin'){
+							echo "歡迎!{$_SESSION['user']} <a href='./admin.php'><button>管理</button></a>|<a href='./api/logout.php'><button>登出</button></a>";
+						}
+						else if(isset($_SESSION['user'])){
+							echo "歡迎!{$_SESSION['user']} <a href='./api/logout.php'><button>登出</button></a>";
+						}
+						else echo "<a href='?do=login'>會員登入</a>";
+						?>
 					</span>
 
 					<?php
