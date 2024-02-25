@@ -88,6 +88,8 @@ class myDB{
 
 $Total = new myDB('total');
 $User = new myDB('user');
+$Type = new myDB('type');
+$Post = new myDB('post');
 
 function updateCount($date, $Total){
     if($Total->count(['date'=>$date])){
