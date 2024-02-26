@@ -23,7 +23,7 @@
             }
             ?>
         </table>
-        <div>
+        <div style="text-align: center;">
             <input type="submit" value="確定刪除">
             <input type="reset" value="清空選取">
         </div>
