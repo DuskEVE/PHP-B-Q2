@@ -1,6 +1,11 @@
 
 <div style="margin-bottom: 20px;">
 
+    <div style="text-align: center;">
+        <h3>最新文章管理</h3>
+        <button onclick="location.href='?do=add_post'">新增文章</button>
+    </div>
+
     <form action="./api/update_post.php" method="post" style="width: 80%; margin: auto">
         <table style="width: 100%;">
             <tr style="text-align: center; background-color: lightgray;">

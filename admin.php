@@ -1,5 +1,6 @@
 ﻿<?php
 include_once "./api/db.php";
+if(!isset($_SESSION['user']) || $_SESSION['user']!='admin') header("location:./index.php");
 ?>
 
 <!DOCTYPE html
