@@ -22,7 +22,16 @@
                 </div>
             </div>
             <div class="option" style="width: 18%; margin:3px; display:flex; justify-content: center; align-items: center;">
-                <span><a class="like-btn" style="text-decoration: none;">讚</a></span>
+                <span>
+                    <?php
+                    if(isset($_SESSION['user'])){
+                        if($PostLike->count(['post_id'=>$post['id'], 'user'=>$_SESSION['user']])){
+                            echo "<a class='like-btn' style='text-decoration: none;' data-id='{$post['id']}' data-user='{$_SESSION['user']}'>收回讚</a>";
+                        }
+                        else echo "<a class='like-btn' style='text-decoration: none;' data-id='{$post['id']}' data-user='{$_SESSION['user']}'>讚</a>";
+                    }
+                    ?>
+                </span>
             </div>
         </div>
         <?php
@@ -39,5 +48,12 @@
     $('.content-full').on('click', (event) => {
         $(event.target).hide();
         $(event.target).parent().siblings().show();
+    });
+    $('.like-btn').on('click', (event) => {
+        let id = $(event.target).data('id');
+        let user = $(event.target).data('user');
+        $.get('./api/post_like.php', {id, user}, (response) => {
+            $(event.target).text(response);
+        });
     });
 </script>

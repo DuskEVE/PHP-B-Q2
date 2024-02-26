@@ -90,6 +90,7 @@ $Total = new myDB('total');
 $User = new myDB('user');
 $Type = new myDB('type');
 $Post = new myDB('post');
+$PostLike = new myDB('post_like');
 
 function updateCount($date, $Total){
     if($Total->count(['date'=>$date])){
