@@ -1,5 +1,28 @@
 
 <fieldset style="width: 70%; margin: auto;">
+    <legend>問卷列表</legend>
+    <table style="width: 100%; text-align: center;">
+        <tr style="background-color: lightgray;">
+            <td style="width: 80%;">問卷名稱</td>
+            <td>投票數</td>
+            <td>開放</td>
+        </tr>
+        <?php
+        $ques = $Que->searchAll(['subject_id'=>0]);
+        foreach($ques as $que){
+        ?>
+        <tr>
+            <td><?=$que['text']?></td>
+            <td><?=$que['vote']?></td>
+            <td><button class='que-display-btn' data-id="<?=$que['id']?>"><?=$que['display']==1?"關閉":"開放"?></button></td>
+        </tr>
+        <?php
+        }
+        ?>
+    </table>
+</fieldset>
+
+<fieldset style="width: 70%; margin: auto;">
     <legend>新增問卷</legend>
 
     <div style="display: flex;">
@@ -39,5 +62,13 @@
     $('.que-reset-btn').on('click', () => {
         $('.que-title').val('');
         $('.que-subject').val('');
+    });
+    $('.que-display-btn').on('click', (enent) => {
+        let target = $(event.target);
+        let id = target.data('id');
+        
+        $.get('./api/que_display.php', {id}, (response) => {
+            target.text(response);
+        });
     });
 </script>
