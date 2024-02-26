@@ -36,8 +36,8 @@
             <div class="option" style="width: 18%; margin:3px; display:flex; align-items: center;">
                 <span>
                     <?php
+                    echo "<span class='likecount-{$post['id']}'>{$post['like_count']}</span> 個人說<img src='./icon/02B03.jpg' style='width: 16px'>";
                     if(isset($_SESSION['user'])){
-                        echo "<span class='likecount-{$post['id']}'>{$post['like_count']}</span> 個人說<img src='./icon/02B03.jpg' style='width: 16px'>";
                         if($PostLike->count(['post_id'=>$post['id'], 'user'=>$_SESSION['user']])){
                             echo "-<a class='like-btn' style='text-decoration: none;' data-id='{$post['id']}' data-user='{$_SESSION['user']}'>收回讚</a>";
                         }

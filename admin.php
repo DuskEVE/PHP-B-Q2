@@ -38,7 +38,7 @@ include_once "./api/db.php";
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
-				<a class="blo" href="?do=">帳號管理</a>
+				<a class="blo" href="?do=admin">帳號管理</a>
 				<a class="blo" href="?do=">分類網誌</a>
 				<a class="blo" href="?do=">最新文章管理</a>
 				<a class="blo" href="?do=">講座管理</a>
@@ -64,9 +64,9 @@ include_once "./api/db.php";
 
 					<?php
 					$do = (isset($_GET['do'])?$_GET['do']:"main");
-					$file = "./front/$do.php";
+					$file = "./back/$do.php";
 					if(file_exists($file)) include $file;
-					else include "./front/main.php";
+					else include "./back/main.php";
 					?>
 				</div>
 				
