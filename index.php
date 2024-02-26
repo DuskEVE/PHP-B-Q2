@@ -16,7 +16,7 @@ include_once "./api/db.php";
 	<script src="./js/js.js"></script>
 </head>
 
-<body>
+<body id="dusk">
 	<div id="alerr"
 		style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
 		<pre id="ssaa"></pre>
@@ -79,9 +79,9 @@ include_once "./api/db.php";
 			</div>
 		</div>
 		<div id="bottom">
-			本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2012健康促進網社群平台 All Right Reserved
+			本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2024健康促進網社群平台 All Right Reserved
 			<br>
-			服務信箱：health@test.labor.gov.tw<img src="./home_files/02B02.jpg" width="45">
+			服務信箱：health@test.labor.gov.tw<img src="./icon/02B02.jpg" width="45">
 		</div>
 	</div>
 
